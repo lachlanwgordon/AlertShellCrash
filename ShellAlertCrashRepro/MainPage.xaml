@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -7,8 +7,16 @@
     <StackLayout>
         <!-- Place new controls here -->
         <Label
-            Text="Welcome to Xamarin.Forms!"
-            HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+            Text="Shell Alert Exception Repro"
+            HorizontalOptions="Center" /&gt;
+        <Button
+            Text="Alert on page"
+            Clicked="AlertOnPage_Clicked" /><Button
+            Text="ActionSheet on page"
+            Clicked="ActionSheetOnPage_Clicked" /><Button
+            Text="Alert on Shell"
+            Clicked="AlertOnShell_Clicked" /><Button
+            Text="ActionSheet on Shell"
+            Clicked="ActionSheetOnShell_Clicked" /></StackLayout>
 </ContentPage>

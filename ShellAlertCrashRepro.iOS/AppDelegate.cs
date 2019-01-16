@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace ShellAlertCrashRepro.iOS
 {
@@ -22,6 +23,7 @@ namespace ShellAlertCrashRepro.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Forms.SetFlags(new[] { "Shell_Experimental" });
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
