@@ -7,16 +7,20 @@
     <StackLayout>
         <!-- Place new controls here -->
         <Label
-            VerticalOptions="CenterAndExpand" />
+            VerticalOptions="CenterAndExpand"
             Text="Shell Alert Exception Repro"
-            HorizontalOptions="Center" /&gt;
+            HorizontalOptions="Center" />
         <Button
             Text="Alert on page"
-            Clicked="AlertOnPage_Clicked" /><Button
+            Clicked="AlertOnPage_Clicked" />
+        <Button
             Text="ActionSheet on page"
-            Clicked="ActionSheetOnPage_Clicked" /><Button
+            Clicked="ActionSheetOnPage_Clicked" />
+        <Button
             Text="Alert on Shell"
-            Clicked="AlertOnShell_Clicked" /><Button
+            Clicked="AlertOnShell_Clicked" />
+        <Button
             Text="ActionSheet on Shell"
-            Clicked="ActionSheetOnShell_Clicked" /></StackLayout>
+            Clicked="ActionSheetOnShell_Clicked" />
+    </StackLayout>
 </ContentPage>

@@ -20,3 +20,42 @@
   at Xamarin.Forms.MessagingCenter.Send[TSender,TArgs] (TSender sender, System.String message, TArgs args) [0x00000] in D:\a\1\s\Xamarin.Forms.Core\MessagingCenter.cs:108 
   at Xamarin.Forms.Page.DisplayActionSheet (System.String title, System.String cancel, System.String destruction, System.String[] buttons) [0x0000b] in D:\a\1\s\Xamarin.Forms.Core\Page.cs:135 
   at ShellAlertCrashRepro.MainPage.ActionSheetOnPage_Clicked (System.Object sender, System.EventArgs e) [0x00002] in /Users/lachlangordon/Projects/AlertShellCrash/ShellAlertCrashRepro/MainPage.xaml.cs:34
+  
+  ### Description
+Calling DisplayAlert or Display ActionSheet in a ContentPage that is within a Shell throws an InvalidCastException. This error occurs in iOS but behaves correctly in Android. UWP untested.
+
+As a work around you can call Shell.CurrentShell.DisplayAlert();
+
+Stack Trace available here https://github.com/lachlanwgordon/AlertShellCrash/blob/master/StackTrace.txt
+
+### Steps to Reproduce
+
+See repro link below or follow these steps. Repro shows both Actionsheet and Alert issues as well as work around using shell.
+
+1. Create new Xamarin Forms App
+2. Upgrade to Xamarin Forms 4.0 pre2
+3. Enable the Shell feature flag by adding             Forms.SetFlags(new[] { "Shell_Experimental" }); to app delegate.
+4. Create a new content page called AppShell.xaml
+5. Change ContentPage to Shell in AppShell.xaml and AppShell.xaml.cs
+6. Replace Content with: <ShellItem><local:MainPage /> </ShellItem>
+7. Add NameSpace of your app as local.
+8. In Constructor or in a click handler call DisplayAlert("Crash", "Can you see this?", "Okay");
+9. In App.xaml.cs set MainPage = new AppShell();
+
+### Expected Behavior
+An Alert should display.
+### Actual Behavior
+An exception is thrown
+### Basic Information
+
+- Version with issue: 4.0.0.62955-pre2
+- Last known good version: N/A this relates to a new feature.
+- IDE: VS Mac 2019 Preview(8.0 build 869)
+- Platform Target Frameworks: 
+  - iOS:  12.1
+
+- Affected Devices: Tested on iPhone 7 iOS 12.1 and various iPhone simulators running iOS 12.1
+
+### Reproduction Link
+
+https://github.com/lachlanwgordon/AlertShellCrash
